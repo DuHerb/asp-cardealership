@@ -13,11 +13,11 @@ namespace CarDealership.Models
     private string Note;
     private static List<Car> _carLot = new List<Car> {};
 
-    public Car(string makeModel, int price, int miles, string note)
+    public Car(string makeModel, string price, string miles, string note)
     {
       MakeModel = makeModel;
-      Price = price;
-      Miles = miles;
+      Price = int.Parse(price);
+      Miles = int.Parse(miles);
       Note = note;
       _carLot.Add(this);
     }
@@ -57,14 +57,29 @@ namespace CarDealership.Models
       return (Price < maxPrice && Miles <= maxMileage);
     }
 
-    public void DisplayInfo()
+    public static List<Car> SearchForModel(string findModel)
     {
-    Console.WriteLine("______________________");
-    Console.WriteLine(MakeModel);
-    Console.WriteLine(Miles + " miles");
-    Console.WriteLine("$" + Price);
-    Console.WriteLine(Note);
+      List<Car> matchCars = new List<Car> {};
+
+      foreach (Car car in _carLot)
+      {
+        if (findModel == car.GetMakeModel())
+        {
+          matchCars.Add(car);
+        }
+      }
+
+      return matchCars;
     }
+
+    // public void DisplayInfo()
+    // {
+    // Console.WriteLine("______________________");
+    // Console.WriteLine(MakeModel);
+    // Console.WriteLine(Miles + " miles");
+    // Console.WriteLine("$" + Price);
+    // Console.WriteLine(Note);
+    // }
 
     public static List<Car> GetCarLot()
     {

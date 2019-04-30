@@ -1,11 +1,11 @@
 @using CarDealership.Models;
 
-<h1>Car Lot</h1>
+<h1>Search Results</h1>
 <ul>
 
   @if (Model.Count == 0)
   {
-    <p>You have no items the car lot!</p>
+    <p>No cars match your search!</p>
   }
   @if(Model.Count != 0)
   {
@@ -18,5 +18,6 @@
     }
   }
 </ul>
-<a href="/cars/new">Add a new Car</a>
-<a href="/cars/search">New Search</a>
+<a href="/cars/search">New search</a>
+<a href="/cars/">See all cars</a>
+<a href="/cars/new">Add car</a>
